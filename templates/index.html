@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        .loader {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+      }
+      .loader:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+      }
+      .circular {
+        -webkit-animation: rotate 5s linear infinite;
+        animation: rotate 5s linear infinite;
+        height: 100%;
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+      .path {
+        stroke-dasharray: 1,200;
+        stroke-dashoffset: 0;
+        -webkit-animation: dash 10.5s ease-in-out infinite, color 6s ease-in-out infinite;
+        animation: dash 10.5s ease-in-out infinite, color 6s ease-in-out infinite;
+        stroke-linecap: round;
+      }
+      @-webkit-keyframes rotate {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes rotate {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @-webkit-keyframes dash {
+        0% {
+          stroke-dasharray: 1,200;
+          stroke-dashoffset: 0;
+        }
+        50% {
+          stroke-dasharray: 89,200;
+          stroke-dashoffset: -35px;
+        }
+        100% {
+          stroke-dasharray: 89,200;
+          stroke-dashoffset: -124px;
+        }
+      }
+      @keyframes dash {
+        0% {
+          stroke-dasharray: 1,200;
+          stroke-dashoffset: 0;
+        }
+        50% {
+          stroke-dasharray: 89,200;
+          stroke-dashoffset: -35px;
+        }
+        100% {
+          stroke-dasharray: 89,200;
+          stroke-dashoffset: -124px;
+        }
+      }
+      .center-div {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+      }
+
+
+    </style>
+</head>
+<body>
+    <div class="loader center-div" style="display: none">
+        <img class="circular" src="{{ MEDIA_URL }}setting-loader.png"/>
+    </div>
+    <form action="/generate/" method="POST">
+         <label for="place">Place</label> <br>
+        <input id="place" type="text" name="place"><br>
+
+         <label for="fruit1">Apple</label>
+          <input type="checkbox" id="fruit1" name="option1" value="apple"><br>
+
+          <label for="fruit2">Banana</label>
+          <input type="checkbox" id="fruit2" name="option2" value="banana"><br>
+
+          <label for="fruit3">Cherry</label>
+          <input type="checkbox" id="fruit3" name="option3" value="cherry"><br>
+
+          <label for="fruit4">Durian</label>
+          <input type="checkbox" id="fruit4" name="option4" value="durian"><br>
+
+        <input type="submit" value="Generate Content">
+    </form>
+
+
+</body>
+</html>
