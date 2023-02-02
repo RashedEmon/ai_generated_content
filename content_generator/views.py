@@ -18,8 +18,17 @@ def index_handler(request):
 
 @csrf_exempt
 def generate_content(request):
+    templateData = {
+        "topic": "",
+        "options": []
+    }
     if request.method == 'POST':
         for data in request.POST:
-            print(data)
+            if data == "topic":
+                templateData["topic"] = request.POST["topic"]
+            if data.startswith("option-"):
+                templateData["options"].append(request.POST[data])
+
+        print(templateData)
         # get_response()
         return render(request, "generated_post.html")
