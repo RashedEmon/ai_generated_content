@@ -13,7 +13,7 @@ def index_handler(request):
         print(settings.MEDIA_URL)
         # time.sleep(50)
         # Code to handle GET request goes here
-        return render(request, 'index.html', {'MEDIA_URL': settings.MEDIA_URL})
+        return render(request, 'admin.html', {'MEDIA_URL': settings.MEDIA_URL})
 
 
 @csrf_exempt
