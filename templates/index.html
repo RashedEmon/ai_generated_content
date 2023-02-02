@@ -1,114 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
-    <style>
-        .loader {
-        display: inline-block;
-        position: relative;
-        width: 80px;
-        height: 80px;
-      }
-      .loader:before {
-        content: "";
-        display: block;
-        padding-top: 100%;
-      }
-      .circular {
-        -webkit-animation: rotate 5s linear infinite;
-        animation: rotate 5s linear infinite;
-        height: 100%;
-        -webkit-transform-origin: center center;
-        transform-origin: center center;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-      }
-      .path {
-        stroke-dasharray: 1,200;
-        stroke-dashoffset: 0;
-        -webkit-animation: dash 10.5s ease-in-out infinite, color 6s ease-in-out infinite;
-        animation: dash 10.5s ease-in-out infinite, color 6s ease-in-out infinite;
-        stroke-linecap: round;
-      }
-      @-webkit-keyframes rotate {
-        100% {
-          -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-        }
-      }
-      @keyframes rotate {
-        100% {
-          -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-        }
-      }
-      @-webkit-keyframes dash {
-        0% {
-          stroke-dasharray: 1,200;
-          stroke-dashoffset: 0;
-        }
-        50% {
-          stroke-dasharray: 89,200;
-          stroke-dashoffset: -35px;
-        }
-        100% {
-          stroke-dasharray: 89,200;
-          stroke-dashoffset: -124px;
-        }
-      }
-      @keyframes dash {
-        0% {
-          stroke-dasharray: 1,200;
-          stroke-dashoffset: 0;
-        }
-        50% {
-          stroke-dasharray: 89,200;
-          stroke-dashoffset: -35px;
-        }
-        100% {
-          stroke-dasharray: 89,200;
-          stroke-dashoffset: -124px;
-        }
-      }
-      .center-div {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-      }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
 
+    <h1>Exploring Dhaka: A Guide to the City of Mosques</h1>
 
-    </style>
-</head>
-<body>
-    <div class="loader center-div" style="display: none">
-        <img class="circular" src="{{ MEDIA_URL }}setting-loader.png"/>
-    </div>
-    <form action="/generate/" method="POST">
-         <label for="place">Place</label> <br>
-        <input id="place" type="text" name="place"><br>
+    <img src="./assets/img.jpg" alt="Aerial view of Dhaka, Bangladesh" />
+    <p>
+      Dhaka, the capital of Bangladesh, is a bustling city of over 18 million
+      people. It is known as the City of Mosques for its many beautiful mosques,
+      and it is also home to a vibrant culture, delicious food, and plenty of
+      activities to keep visitors entertained. Whether you’re looking for a
+      relaxing getaway or an exciting adventure, Dhaka has something for
+      everyone.
+    </p>
 
-         <label for="fruit1">Apple</label>
-          <input type="checkbox" id="fruit1" name="option1" value="apple"><br>
+    <h2>Popular Places to Visit</h2>
 
-          <label for="fruit2">Banana</label>
-          <input type="checkbox" id="fruit2" name="option2" value="banana"><br>
+    <ul>
+      <li>
+        <strong>Lalbagh Fort:</strong> Built in 1678, this Mughal fort is a
+        popular tourist destination. It features a museum, mosque, and palace,
+        as well as stunning views of the city.
+      </li>
+      <li>
+        <strong>Ahsan Manzil:</strong> This 19th-century palace was once the
+        home of the Nawab of Dhaka. It is now a museum, showcasing the city’s
+        history and culture.
+      </li>
+      <li>
+        <strong>National Parliament House:</strong> This iconic building is the
+        seat of the Bangladeshi government. It is open to visitors, who can
+        explore the grounds and take in the impressive architecture.
+      </li>
+      <li>
+        <strong>Bangladesh National Museum:</strong> This museum houses a large
+        collection of artifacts from the country’s history, including
+        sculptures, paintings, and coins.
+      </li>
+    </ul>
 
-          <label for="fruit3">Cherry</label>
-          <input type="checkbox" id="fruit3" name="option3" value="cherry"><br>
+    <h2>Popular Food Items</h2>
+    <ul>
+      <li>
+        <strong>Biriyani:</strong> A fragrant rice dish cooked with spices,
+        meat, and vegetables.
+      </li>
+      <li>
+        <strong>Fuchka:</strong> A popular street food consisting of deep-fried
+        dough balls filled with potatoes, chickpeas, and spices.
+      </li>
+      <li>
+        <strong>Kacchi:</strong> A type of curry made with raw marinated meat,
+        potatoes, and spices.
+      </li>
+      <li>
+        <strong>Shorbot:</strong> A refreshing drink made with yogurt, sugar,
+        and spices.
+      </li>
+    </ul>
 
-          <label for="fruit4">Durian</label>
-          <input type="checkbox" id="fruit4" name="option4" value="durian"><br>
+    <img
+      src="./assets/img2.jpg"
+      alt="People walking on a street in Dhaka, Bangladesh"
+    />
 
-        <input type="submit" value="Generate Content">
-    </form>
+    <h2>Activities to Do</h2>
+    <ul>
+      <li>
+        <strong>River Cruises:</strong> Enjoy a relaxing cruise down the
+        Buriganga River, with prices starting at $10 per person.
+      </li>
+      <li>
+        <strong>Cycling Tours:</strong> Explore the city on two wheels, with
+        tours starting at $20 per person.
+      </li>
+      <li>
+        <strong>Cooking Classes:</strong> Learn how to make traditional
+        Bangladeshi dishes, with classes starting at $30 per person.
+      </li>
+      <li>
+        <strong>Cultural Tours:</strong> Get an in-depth look at the city’s
+        culture, with tours starting at $40 per person.
+      </li>
+    </ul>
 
-
-</body>
+    <p>
+      Dhaka is a vibrant city full of culture, history, and delicious food. From
+      exploring the city’s many mosques to taking a river cruise, there is
+      something for everyone in Dhaka. Whether you’re looking for a relaxing
+      getaway or an exciting adventure, Dhaka is the perfect destination.
+    </p>
+  </body>
 </html>
