@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+.idea
 # C extensions
 *.so
 
@@ -17,4 +18,3 @@ db.sqlite3
 .env/
 env/
 venv/
-
