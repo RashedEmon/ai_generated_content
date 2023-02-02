@@ -13,13 +13,14 @@ def index_handler(request):
         print(settings.MEDIA_URL)
         # time.sleep(50)
         # Code to handle GET request goes here
-        return render(request, 'index.html', {'MEDIA_URL': settings.MEDIA_URL})
+        return render(request, 'admin.html', {'MEDIA_URL': settings.MEDIA_URL})
 
 
 @csrf_exempt
 def generate_content(request):
+    print(request)
     if request.method == 'POST':
         for data in request.POST:
             print(data)
         # get_response()
-        return render(request, "generated_post.html")
+        return render(request, "index.html")
