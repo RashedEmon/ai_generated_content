@@ -36,13 +36,15 @@ def generate_content(request):
         generated = get_response(res)
         text = ""
         if generated["success"]:
-            print("openai give content")
             text = generated["text"]
+        else:
+            return render(request, 'error.html', {"msg": "Internal Server Error"})
 
         captions = extract_caption(text)
         print(captions)
         crawl = Crawler()
-        crawl.run(captions)
+        if not crawl.run(captions):
+            return render(request, 'error.html', {"msg": "Internal Server Error"})
         generate_content = replace_image(text, crawl.images)
         print(generate_content)
 

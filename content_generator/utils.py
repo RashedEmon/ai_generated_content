@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 def get_response(prompt):
     print("entered in openai")
-    openai.api_key = "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"
+    openai.api_key = ""
     try:
         response = openai.Completion.create(
             model="text-davinci-003",
@@ -20,7 +20,7 @@ def get_response(prompt):
         print(e)
         return {
             "text": "",
-            "success": True,
+            "success": False,
             "message": e,
             "created": time.gmtime(),
             "id": ""

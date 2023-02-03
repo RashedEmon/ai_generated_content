@@ -44,7 +44,9 @@ class Crawler:
                                 break
                 except Exception as e:
                     print(e)
+                    return False
             index += 1
+        return True
 
     def get_image(self, image_caption):
         print("get image entered")
