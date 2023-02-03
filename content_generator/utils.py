@@ -1,6 +1,6 @@
 import time
-
 import openai
+
 
 demo_prompt = "write a travel content about hawaii island with at least two detailed image captions wrap by bracket " \
               "and please include points such as including list of popular food, popular places to go, " \
@@ -47,3 +47,6 @@ def prepare_prompt(topic,data):
 
 
 print(prepare_prompt("hawaii",""))
+
+
+

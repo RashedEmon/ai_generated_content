@@ -17,9 +17,9 @@
         </div>
 
         <div class="form-div">
-            <form action="">
+            <form action="/generate/" method="POST">
               <label for="fname">Write your topic</label><br>
-              <input type="text" id="fname" name="firstname" placeholder="Your topic.."><br>
+              <input required type="text" id="fname" name="topic" placeholder="Your topic.."><br>
             
               <label for="">Selected topic</label><br>
               <div class="selected-topic">
@@ -27,55 +27,67 @@
                         <li>
                             <div class="feature">
                                 <p>featured-1</p>
-                                <button><img class="delete-btn" src="../media/delete.svg" alt="" srcset=""></button>
+                                <button>X</button>
                             </div>
                         </li>
                         <li>
                             <div class="feature">
                                 <p>featured-1</p>
-                                <button><img class="delete-btn" src="../media/delete.svg" alt="" srcset=""></button>
+                                <button>X</button>
                             </div>
                         </li>
                         <li>
                             <div class="feature">
                                 <p>featured-1</p>
-                                <button><img class="delete-btn" src="../media/delete.svg" alt="" srcset=""></button>
+                                <button>X</button>
                             </div>
                         </li>
                         <li>
                             <div class="feature">
                                 <p>featured-1</p>
-                                <button><img class="delete-btn" src="../media/delete.svg" alt="" srcset=""></button>
+                                <button>X</button>
                             </div>
                         </li>
                         <li>
                             <div class="feature">
                                 <p>featured-1</p>
-                                <button><img class="delete-btn" src="../media/delete.svg" alt="" srcset=""></button>
+                                <button>X</button>
                             </div>
                         </li>
                         <li>
                             <div class="feature">
                                 <p>featured-1</p>
-                                <button><img class="delete-btn" src="../media/delete.svg" alt="" srcset=""></button>
+                                <button>X</button>
                             </div>
                         </li>
                         <li>
                             <div class="feature">
                                 <p>featured-1</p>
-                                <button><img class="delete-btn" src="../media/delete.svg" alt="" srcset=""></button>
+                                <button>X</button>
                             </div>
                         </li>
                         <li>
                             <div class="feature">
                                 <p>featured-1</p>
-                                <button><img class="delete-btn" src="../media/delete.svg" alt="" srcset=""></button>
+                                <button>X</button>
                             </div>
                         </li>
                         <li>
                             <div class="feature">
                                 <p>featured-1</p>
-                                <button><img class="delete-btn" src="../media/delete.svg" alt="" srcset=""></button>
+                                <button>X</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature">
+                                <p>featured-1</p>
+                                <button>X</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature">
+                                <p>featured-1</p>
+                                <button>X</button>
                             </div>
                         </li>
                             
@@ -85,8 +97,8 @@
               <label for="tag-name">Write your tag name</label><br>
 
               <div class="tag-container">
-                <input type="text" id="tag-name" name="tag-name" placeholder="Tag name..">
-                <button class="tag-btn">Add Tag</button>
+                <input type="text" id="js-option" name="tag-name" placeholder="Tag name..">
+                <button id="js-add-button" class="tag-btn">Add Tag</button>
               </div><br>
              
           
@@ -96,6 +108,50 @@
         </div>
     </section>
 
-    
+    <script>
+
+        var adminScript = {
+            count: 0,
+            box: undefined,
+            init: function (){
+                adminScript.box=document.getElementById("js-option-box");
+
+                    document.getElementById("js-add-button").addEventListener("click",function (e){
+                        e.preventDefault();
+                        var option = document.getElementById("js-option").value;
+                        console.log(option)
+                        adminScript.count++
+                        var html = "<li id='list'>" +
+                                        "<div class=\"feature\">" +
+                                            "<p>"+option+"</p>" +
+                                            "<input type='hidden' value='"+option+"' name='option-"+adminScript.count+"'/>"+
+                                            "<button id='js-cross-button-"+adminScript.count+"'>X</button>" +
+                                        "</div>" +
+                                    "</li>"
+
+                adminScript.appendOption(adminScript.box,html);
+            });
+            },
+            htmlStringToNode: function (htmlString){
+                var parentElement = document.createElement("div");
+                parentElement.innerHTML = htmlString;
+                return parentElement.firstChild;
+            },
+            appendOption: function (box,html){
+                box.appendChild(adminScript.htmlStringToNode(html));
+                document.querySelectorAll("[id^='js-cross-button']").forEach(function (node){
+                    node.addEventListener('click',function (e){
+                        e.preventDefault();
+                        var parent = e.target.closest("li");
+                        adminScript.box.removeChild(parent)
+                    })
+                });
+            }
+        }
+
+        window.onload = function (){
+            adminScript.init();
+        }
+    </script>
 </body>
 </html>
