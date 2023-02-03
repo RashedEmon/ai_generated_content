@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="{% static 'admin.css' %}">
 </head>
 <body>
-
+    <div class="loader">
+        <img src="/media/setting-loader.png"/>
+    </div>
     <section class="container">
         <div>
             <h2 class="admin-pannel">Admin Pannel</h2><hr>
@@ -37,7 +39,7 @@
               </div><br>
              
           
-              <input type="submit" value="Generate">
+              <input id="js-submit-btn" type="submit" value="Generate">
 
             </form>
         </div>
@@ -85,6 +87,11 @@
         }
 
         window.onload = function (){
+            document.getElementById("js-submit-btn").addEventListener('click',function (){
+               document.querySelector(".loader").style.display = "block";
+               document.querySelector("html").style.opacity = "0.5";
+               document.querySelector(".loader").style.opacity = "1";
+            });
             adminScript.init();
         }
     </script>

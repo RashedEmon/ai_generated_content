@@ -1,15 +1,11 @@
 import time
 import openai
-
-
-demo_prompt = "write a travel content about hawaii island with at least two detailed image captions wrap by bracket " \
-              "and please include points such as including list of popular food, popular places to go, " \
-              "Available activities to do,history etc."
+from bs4 import BeautifulSoup
 
 
 def get_response(prompt):
-    openai.api_key = "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"
-
+    print("entered in openai")
+    openai.api_key = "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"
     try:
         response = openai.Completion.create(
             model="text-davinci-003",
@@ -40,13 +36,27 @@ def get_response(prompt):
         }
 
 
-def prepare_prompt(topic,data):
-    return "write a travel content about "+topic+" with at least two detailed image captions wrap by bracket " \
-              "and please include points such as including list of popular food, popular places to go, " \
-              "Available activities to do,history etc."
+def prepare_prompt(topic: str, options):
+    res = ""
+    for option in options:
+        res += option + "\n"
+
+    return f"""write travel content about {topic}
+Give a perfect awesome image caption with html image tag must in top Write a proper title for the article
+Include an introduction of at least 300 words 
+{res}give me in a html with style.css link"""
 
 
-print(prepare_prompt("hawaii",""))
+def extract_caption(html_content):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    img_tags = soup.find_all('img')
+    return [img['alt'] for img in img_tags]
 
 
-
+def replace_image(html, image_list):
+    print(image_list)
+    soup = BeautifulSoup(html, 'html.parser')
+    img_tags = soup.find_all("img")
+    for i, img_tag in enumerate(img_tags):
+        img_tag["src"] = image_list[i]
+        return soup.prettify()

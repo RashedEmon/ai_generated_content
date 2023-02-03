@@ -170,3 +170,28 @@ ul> li{
         font-size: 20px;
     }  
 }
+
+.content{
+    height: 90vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+.save-button {
+  position: absolute;
+  bottom: 20px;
+  right: 50%;
+    transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.save-button button{
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 21px;
+}

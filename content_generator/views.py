@@ -3,8 +3,11 @@ import time
 from django.conf import settings
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from .crawler import Crawler
+from .utils import prepare_prompt, get_response, extract_caption, replace_image
 
-from .utils import get_response
+from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 # Create your views here.
@@ -29,6 +32,24 @@ def generate_content(request):
             if data.startswith("option-"):
                 templateData["options"].append(request.POST[data])
 
-        print(templateData)
-        # get_response()
-        return render(request, "generated_post.html")
+        res = prepare_prompt(templateData["topic"], templateData["options"])
+        generated = get_response(res)
+        text = ""
+        if generated["success"]:
+            print("openai give content")
+            text = generated["text"]
+
+        captions = extract_caption(text)
+        print(captions)
+        crawl = Crawler()
+        crawl.run(captions)
+        generate_content = replace_image(text, crawl.images)
+        print(generate_content)
+
+        return render(request, "generated_post.html", {"content": generate_content})
+
+
+@csrf_exempt
+def save(request):
+    if request.method == "POST":
+        return render(request, 'admin.html')
